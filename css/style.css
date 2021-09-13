@@ -3,3 +3,35 @@
     padding: 0;
     margin: 0;
 }
+
+body {
+    font-family: 'Acme', sans-serif;
+}
+
+main {
+    background-color: lightgray;
+}
+
+#logo {
+    font-family: 'Acme', sans-serif;
+    color: rgb(41, 177, 221);
+    margin: 15px 0 0 10px;
+}
+
+.color-nav {
+    background-color: rgb(41, 177, 221);
+    height: 50px;
+    width: 100%;
+}
+
+.container {
+    width: 100vh;
+    height: 100vh - 105px;
+}
+
+
+.card {
+    width: 200px;
+    height: 100px;
+    border-radius: 10px;
+}
