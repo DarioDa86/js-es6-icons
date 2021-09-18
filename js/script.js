@@ -118,37 +118,82 @@ const icons = [
 	},
   ];
 
-//   Selezioniamo il contenitore di icone
+  const colors = {
+	food: "pink",
+	animal: "green",
+	beverage: "yellow"
+};
+
+// ciclo su ogni icona e compongo il markup html da inserire 
+
+const printIcons = (arr, container) => {
+	container.innerHTML = "";
+	arr.forEach(
+		(elm) => {
+			const {name, family, prefix, color} = elm;
+
+			document.getElementById("icons").innerHTML += `
+					<div class="icon">
+								<i class="${family} ${prefix}${name}" style="color:${color}" ></i>
+								<div class="icon-name">${name}</div>
+					</div>
+			`
+		}
+	);
+}
+
+//   Selezioniamo il contenitore di icone e le coloriamo in base alla category
 const containerIcons = document.getElementById("icons");
 
-// ciclo su ongi icona e compongo il markup html da iniettare
-icons.forEach(
-    (elm) => {
-
-        // Attraverso la destrutturizzazione tiro fuori le proprietà dall'oggetto sottoforma di variabili
-        const {name, family, prefix} = elm;
-
-        containerIcons.innerHTML += `
-        <div class="icon">
-            <i class="${family} ${prefix}${name}"></i>
-            <div class="icon-name">${name}</div>
-        </div>
-        `;
-    }
-);
-
-// Coloriamo le icone in base al tipo
 const iconsColored = icons.map(
     (elm) => {
         return {
-            name: elm.name,
-            family: elm.family,
-            prefix:elm.prefix,
-            category: elm.category,
-            color: colors[elm.category]
+            ...elm,
+			color: colors[elm.category]
         };
+		
     }
 );
 
-console.log(iconsColored);
 
+// console.log(iconsColored.color);
+
+
+printIcons(iconsColored, containerIcons);
+
+// Creiamo una select con i tipi di icone e usiamola per filtrare le icone
+const iconCategories = [];
+icons.forEach(
+	(elm) => {
+		if ( iconCategories.includes(elm.category) == false ) {
+			iconCategories.push(elm.category);
+		}
+	}
+);
+
+
+const selectCategories = document.getElementById("category");
+
+iconCategories.forEach(
+	(elm) => {
+		selectCategories.innerHTML += `<option value="${elm}">${elm}</option>`;
+	}
+);
+
+// creo l'evento "change" sulla select creata
+selectCategories.addEventListener("change", 
+	function() {
+		// console.log(selectCategories.value);
+
+		const iconsFiltered = iconsColored.filter(
+			(elm) => {
+				if ( elm.category == selectCategories.value || selectCategories.value == "" ) {
+					return true;
+				}
+				return false;
+			}
+		);
+
+		printIcons(iconsFiltered, containerIcons);
+	}
+);

@@ -9,7 +9,6 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Acme&display=swap" rel="stylesheet">
-
         <!-- /Google Font -->
 
         <!-- Font Awesome-->
@@ -23,17 +22,21 @@
         <header>
             <h1 id="logo">FontIcons</h1>
             <nav class="color-nav">
-                <div class="search">FILTRA PER TIPO </div>
+                <div class="search">
+                    FILTRA PER TIPO 
+                    <select name="category" id="category">
+                        <option value="">All</option>
+                        <!-- <option value="animal"></option>
+                        <option value="food"></option>
+                        <option value="beverage"></option> -->
+                    </select>
+                </div>
+
             </nav>
 
         </header>
         <main>
-            <div class="icons">
-
-                <div class="icon">
-                    <i class="fas fa-horse"></i>
-                    <div class="icon-name">fas fa-horse</div>
-                </div>
+            <div id="icons">
 
             </div>
 

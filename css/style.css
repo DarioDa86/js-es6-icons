@@ -29,21 +29,21 @@ main {
     padding: 10px;
 }
 
-.icons {
+#icons {
     display: flex;
     flex-wrap: wrap;
 }
 
+#icons i {
+    font-size: 50px;
+}
 
 .icon {
-    width: calc(100% / 5 - 10px);
+    width: calc(100% / 5 - 20px);
+    margin: 10px;
     height: 100px;
     background-color: #fff;
     border-radius: 15px;
     text-align: center;
     padding: 20px;
-}
-
-.fa-horse {
-    font-size: 50px;
 }
